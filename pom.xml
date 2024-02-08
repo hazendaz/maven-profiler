@@ -14,7 +14,7 @@
     <description>Log Maven mojos execution time</description>
 
     <prerequisites>
-        <maven>3.0.4</maven>
+        <maven>3.3.9</maven>
     </prerequisites>
 
     <scm>
@@ -36,18 +36,18 @@
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
-            <version>3.1.0</version>
+            <version>3.9.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>11.0.2</version>
+            <version>15.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.jknack</groupId>
             <artifactId>handlebars</artifactId>
-            <version>4.3.0</version>
+            <version>4.3.1</version>
         </dependency>
         <dependency>
             <groupId>com.eclipsesource.minimal-json</groupId>
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>4.3.1</version>
+            <version>4.11.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -80,26 +80,25 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-guava</artifactId>
-            <version>1.0.0</version>
+            <version>3.25.3</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.35</version>
+            <version>2.0.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
+            <groupId>org.apache.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>3.0.21</version>
+            <version>4.0.21</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
 
@@ -128,9 +127,11 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
@@ -170,8 +171,9 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-invoker-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <projectsDirectory>src/it</projectsDirectory>
                     <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
@@ -206,11 +208,12 @@
         <profile>
             <id>build-with-toolchains</id>
             <activation>
-                <jdk>!1.8</jdk>
+                <jdk>!8</jdk>
             </activation>
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-toolchains-plugin</artifactId>
                         <executions>
                             <execution>
