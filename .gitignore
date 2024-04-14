@@ -11,3 +11,4 @@ target
 .profiler
 release.properties
 .mvn/timing.properties
+.factorypath
